@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Annu ❤️</title>
+
+<!-- Romantic font -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:-apple-system, BlinkMacSystemFont, sans-serif;
+    background:linear-gradient(140deg,#ff9a9e,#fad0c4);
+    overflow:hidden;
+}
+
+/* Glow background */
+body::before{
+    content:"";
+    position:absolute;
+    width:120%;
+    height:120%;
+    background:radial-gradient(circle,#ffffff55,transparent 60%);
+    filter:blur(60px);
+}
+
+/* Card */
+.card{
+    background:white;
+    padding:28px;
+    border-radius:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
+    text-align:center;
+    width:85vw;
+    max-width:360px;
+    z-index:2;
+}
+
+button{
+    padding:14px 26px;
+    margin-top:18px;
+    font-size:18px;
+    border:none;
+    border-radius:14px;
+}
+
+/* Buttons */
+#yes{background:#ff4d6d;color:white;}
+#no{background:#bbb;color:white; position:absolute;}
+#song{background:#ff4d6d;color:white;}
+
+/* Petals */
+.petal{
+    position:absolute;
+    top:-20px;
+    font-size:18px;
+    animation:float linear forwards;
+}
+@keyframes float{
+    to{
+        transform:
+            translateY(110vh)
+            translateX(60px)
+            rotate(360deg);
+        opacity:0.6;
+    }
+}
+
+/* Envelope container */
+#envelope{
+    display:none;
+    width:90vw;
+    max-width:420px;
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.3);
+    text-align:center;
+    z-index:2;
+}
+
+/* Envelope animation */
+.open{
+    animation:openEnv 0.8s ease forwards;
+}
+@keyframes openEnv{
+    from{transform:scale(0.7); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+/* Message style */
+h2{
+    font-family:'Great Vibes', cursive;
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+/* Photo */
+#envelope img{
+    width:100%;
+    border-radius:16px;
+    margin-top:12px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card" id="mainCard">
+<h3>Annu ❤️<br>Would you be my Valentine?</h3>
+<button id="yes">Yes</button>
+<button id="no">No</button>
+</div>
+
+<div id="envelope">
+<h2>Happy Rose Day 🌹<br>Annu</h2>
+
+<img src="photo5.jpg">
+
+<button id="song">This is exactly how I feel about you ❤️</button>
+</div>
+
+<script>
+
+// runaway NO
+const noBtn=document.getElementById("no");
+noBtn.addEventListener("touchstart",moveNo);
+noBtn.addEventListener("mouseover",moveNo);
+
+function moveNo(){
+    noBtn.style.left=Math.random()*80+"vw";
+    noBtn.style.top=Math.random()*80+"vh";
+}
+
+// YES click
+document.getElementById("yes").addEventListener("click",()=>{
+
+    document.getElementById("mainCard").style.display="none";
+
+    // drifting petals
+    setInterval(()=>{
+        let p=document.createElement("div");
+        p.className="petal";
+        p.innerHTML="🌸";
+        p.style.left=Math.random()*100+"vw";
+        p.style.animationDuration=(Math.random()*8+6)+"s";
+        document.body.appendChild(p);
+    },350);
+
+    let env=document.getElementById("envelope");
+    env.style.display="block";
+    env.classList.add("open");
+});
+
+// Spotify redirect
+document.getElementById("song").addEventListener("click",()=>{
+    window.location.href="https://open.spotify.com/track/7cykEB2A1Kfbf9SlHMlH2R";
+});
+
+</script>
+</body>
+</html>
